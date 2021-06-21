@@ -1,0 +1,29 @@
+app: aws-node-rest-api-typescript
+service: fiserv-node-api
+
+provider:
+  name: aws
+  runtime: nodejs12.x
+
+functions:
+  hello:
+    handler: handler.hello
+    events:
+      - http:
+          path: /
+          method: get
+  v1-client:
+    handler: src/clients.handler
+    events:
+      - http:
+          path: /api/v1/parse
+          method: POST
+  v2-client:
+    handler: src/clients.handler
+    events:
+      - http:
+          path: /api/v2/parse
+          method: POST
+plugins:
+  - serverless-plugin-typescript
+  - serverless-offline
