@@ -6,12 +6,6 @@ provider:
   runtime: nodejs12.x
 
 functions:
-  hello:
-    handler: handler.hello
-    events:
-      - http:
-          path: /
-          method: get
   v1-client:
     handler: src/clients.handler
     events:
